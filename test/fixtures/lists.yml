@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Shopping List
   user: one
 
 two:
-  name: MyString
+  name: Todo List
   user: two
+
+user_one_second:
+  name: Work Tasks
+  user: one

@@ -4,4 +4,6 @@ class User < ApplicationRecord
   has_many :lists
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  validates_uniqueness_of :email_address
 end
