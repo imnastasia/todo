@@ -1,0 +1,54 @@
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">My Lists</h1>
+    <%= link_to new_list_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200 flex items-center gap-2" do %>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+      </svg>
+      New List
+    <% end %>
+  </div>
+
+  <div id="lists" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <% @lists.each do |list| %>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
+        <div class="p-6">
+          <%= link_to list, class: "block group mb-3" do %>
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                <%= list.name %>
+              </h2>
+              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          <% end %>
+          <div class="flex justify-end items-center gap-2">
+            <%= link_to edit_list_path(list), class: "text-gray-500 hover:text-blue-600 transition-colors duration-200 p-1" do %>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+              </svg>
+            <% end %>
+            <%= button_to list, method: :delete, data: { turbo_confirm: "Are you sure you want to delete '#{list.name}'?" },
+                class: "text-gray-500 hover:text-red-600 transition-colors duration-200 border-0 bg-transparent p-1 inline-flex items-center justify-center" do %>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+              </svg>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @lists.empty? %>
+      <div class="col-span-full text-center py-12">
+        <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+        </svg>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">No lists yet</h3>
+        <p class="text-gray-500 mb-6">Get started by creating your first list.</p>
+        <%= link_to "Create your first list", new_list_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200" %>
+      </div>
+    <% end %>
+  </div>
+</div>

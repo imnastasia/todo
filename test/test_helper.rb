@@ -10,6 +10,9 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+    def sign_in_as(user)
+      session = Session.create!(user: user)
+      Current.session = session
+    end
   end
 end

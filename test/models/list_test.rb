@@ -16,7 +16,7 @@ class ListTest < ActiveSupport::TestCase
 
   test 'can be saved with valid attributes' do
     user = users(:one)
-    list = List.new(name: 'Shopping List', user:)
+    list = List.new(name: 'Routine', user:)
     assert list.save
   end
 
