@@ -17,7 +17,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to @list
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -31,7 +31,7 @@ class ListsController < ApplicationController
     if @list && @list.update(list_params)
       redirect_to @list, notice: 'List was successfully updated.'
     elsif @list
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     else
       redirect_to lists_path, alert: 'List not found.'
     end

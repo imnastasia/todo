@@ -44,7 +44,7 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
       post lists_url, params: { list: { name: '' } }
     end
 
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
     assert_select '.bg-red-50' # Error message container
   end
 
@@ -90,7 +90,7 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
 
     @list.reload
     assert_equal original_name, @list.name
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
     assert_select '.bg-red-50' # Error message container
   end
 

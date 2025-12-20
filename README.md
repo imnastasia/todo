@@ -39,7 +39,7 @@ A modern, elegant task management application built with Ruby on Rails 8 and sty
 1. **Clone the repository**
    ```bash
    git clone https://github.com/imnastasia/todo.git
-   cd todoi
+   cd todo
    ```
 
 2. **Install dependencies**
